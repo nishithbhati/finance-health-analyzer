@@ -1,0 +1,321 @@
+/* --- IMPORT MODERN FONTS --- */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+/* --- CSS VARIABLES (UPDATED THEME) --- */
+:root {
+    /* Palette: Vibrant Violet to Blue */
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --primary-color: #764ba2;
+    --secondary-color: #667eea;
+    
+    --success-color: #00c853;
+    --danger-color: #ff4757;
+    
+    --text-main: #2d3436;
+    --text-muted: #636e72;
+    
+    /* Glassmorphism Variables */
+    --bg-gradient: linear-gradient(45deg, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+    --card-bg: rgba(255, 255, 255, 0.75); /* Semi-transparent white */
+    --card-border: rgba(255, 255, 255, 0.8);
+    
+    --input-bg: rgba(255, 255, 255, 0.6);
+    --shadow-soft: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+    --radius: 16px;
+}
+
+/* --- GLOBAL RESET --- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    /* Attractive animated background */
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    color: var(--text-main);
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+}
+
+/* Background Animation */
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.container {
+    max-width: 850px;
+    margin: 0 auto;
+    padding-bottom: 3rem;
+}
+
+/* --- HEADER --- */
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 2;
+}
+
+header h1 {
+    font-weight: 800;
+    font-size: 2.8rem;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+    letter-spacing: -1px;
+}
+
+header p { 
+    color: rgba(255,255,255, 0.9); /* White text for dark background */
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* --- GLASS CARDS --- */
+main { display: flex; flex-direction: column; gap: 1.5rem; }
+
+.card {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px); /* The Blur Effect */
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--card-border);
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+}
+
+.card:hover { 
+    transform: translateY(-5px); 
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+h3 {
+    font-size: 1.15rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-main);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+}
+
+/* Little colored dot next to titles */
+h3::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    margin-right: 12px;
+}
+
+/* --- INPUTS & FORMS --- */
+.input-group, .form-row { display: flex; gap: 1rem; align-items: center; }
+
+input {
+    width: 100%;
+    padding: 14px 20px;
+    border: 1px solid rgba(0,0,0,0.05);
+    background-color: var(--input-bg);
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    color: var(--text-main);
+}
+
+input:focus {
+    outline: none;
+    background-color: #fff;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(118, 75, 162, 0.15);
+}
+
+/* --- BUTTONS --- */
+button {
+    padding: 14px 28px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary {
+    background: var(--primary-gradient);
+    color: white;
+    box-shadow: 0 4px 15px rgba(118, 75, 162, 0.4);
+}
+
+.btn-primary:hover { 
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(118, 75, 162, 0.5);
+}
+
+.btn-danger {
+    background-color: #ffebee;
+    color: var(--danger-color);
+    font-size: 0.75rem;
+    padding: 8px 16px;
+    margin-left: 10px;
+    border-radius: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-danger:hover { 
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.clear-btn {
+    width: 100%;
+    background-color: transparent;
+    border: 2px solid var(--danger-color);
+    color: var(--danger-color);
+    margin-top: 1.5rem;
+}
+
+.clear-btn:hover { 
+    background-color: var(--danger-color); 
+    color: white;
+}
+
+/* --- ANALYSIS SECTION --- */
+.analysis-section { background: rgba(255, 255, 255, 0.85); }
+
+.balance-card {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px dashed #d1d8e0;
+}
+
+.balance-card h4 {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    font-weight: 700;
+}
+
+#total-balance {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-top: 0.5rem;
+}
+
+/* Progress Bars */
+.budget-bars { display: flex; flex-direction: column; gap: 1.5rem; }
+.bar-container { width: 100%; }
+
+.bar-label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.progress-bg {
+    width: 100%;
+    height: 14px;
+    background-color: #f1f3f6;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    border-radius: 20px;
+    transition: width 1s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Shimmer effect on bars */
+.progress-fill::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(
+        45deg,
+        rgba(255,255,255,0) 25%,
+        rgba(255,255,255,0.2) 50%,
+        rgba(255,255,255,0) 75%
+    );
+    background-size: 20px 20px;
+    animation: moveShimmer 1.5s linear infinite;
+}
+
+@keyframes moveShimmer {
+    0% { background-position: -20px 0; }
+    100% { background-position: 20px 0; }
+}
+
+#needs-bar { background: linear-gradient(90deg, #ff9966, #ff5e62); }
+#wants-bar { background: linear-gradient(90deg, #56ccf2, #2f80ed); }
+#savings-bar { background: linear-gradient(90deg, #00b09b, #96c93d); }
+
+/* --- TRANSACTION LIST --- */
+#expense-list { list-style: none; max-height: 300px; overflow-y: auto; padding-right: 5px;}
+
+/* Custom Scrollbar for list */
+#expense-list::-webkit-scrollbar { width: 6px; }
+#expense-list::-webkit-scrollbar-track { background: transparent; }
+#expense-list::-webkit-scrollbar-thumb { background-color: #ccc; border-radius: 20px; }
+
+#expense-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem;
+    margin-bottom: 0.8rem;
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,0.03);
+    border-radius: 12px;
+    transition: all 0.2s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+}
+
+#expense-list li:hover { 
+    border-color: var(--primary-color);
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.expense-info { display: flex; flex-direction: column; }
+.expense-name { font-weight: 600; color: var(--text-main); font-size: 1rem; }
+.expense-amount { 
+    font-weight: 700; 
+    color: var(--text-main); 
+    font-size: 1.1rem; 
+    margin-top: 2px;
+}
+
+/* --- MOBILE RESPONSIVE --- */
+@media (max-width: 700px) {
+    .form-row, .input-group { flex-direction: column; align-items: stretch; }
+    header h1 { font-size: 2rem; }
+    .card { padding: 1.5rem; }
+    button { width: 100%; margin-top: 0.5rem; }
+    .input-group button, .form-row button { margin-top: 10px; }
+}

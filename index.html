@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Financial Health Analyzer</title>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Financial Health Analyzer</h1>
+            <p>Track income, manage expenses, and analyze your 50/30/20 budget.</p>
+        </header>
+
+        <!-- Main Dashboard Area -->
+        <main>
+            <!-- Top Section: Income Input -->
+            <section class="card">
+                <h3>Monthly Income</h3>
+                <div class="input-group">
+                    <input type="number" id="income-input" placeholder="Enter total income (e.g., 5000)" />
+                    <button id="set-income-btn" class="btn-primary">Set Budget</button>
+                </div>
+            </section>
+
+            <!-- Middle Section: Add Expense -->
+            <section class="card">
+                <h3>Add Transaction</h3>
+                <div class="form-row">
+                    <input type="text" id="expense-name" placeholder="Expense Name (e.g., Rent, Groceries)">
+                    <input type="number" id="expense-amount" placeholder="Amount">
+                    <button id="add-expense-btn" class="btn-primary">Add Expense</button>
+                </div>
+            </section>
+
+            <!-- Visual Analysis Section -->
+            <section class="card analysis-section">
+                <div class="balance-card">
+                    <h4>Remaining Balance</h4>
+                    <h2 id="total-balance">$0.00</h2>
+                </div>
+                
+                <div class="budget-bars">
+                    <div class="bar-container">
+                        <div class="bar-label"><span>Needs (50%)</span><span id="needs-val">$0</span></div>
+                        <div class="progress-bg"><div class="progress-fill" id="needs-bar"></div></div>
+                    </div>
+                    <div class="bar-container">
+                        <div class="bar-label"><span>Wants (30%)</span><span id="wants-val">$0</span></div>
+                        <div class="progress-bg"><div class="progress-fill" id="wants-bar"></div></div>
+                    </div>
+                    <div class="bar-container">
+                        <div class="bar-label"><span>Savings (20%)</span><span id="savings-val">$0</span></div>
+                        <div class="progress-bg"><div class="progress-fill" id="savings-bar"></div></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Bottom Section: List -->
+            <section class="card">
+                <h3>Transaction History</h3>
+                <ul id="expense-list">
+                    <!-- Items will be injected here by JS -->
+                </ul>
+                <button id="clear-btn" class="clear-btn">Clear All Data</button>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
